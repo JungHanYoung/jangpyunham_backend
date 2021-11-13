@@ -1,0 +1,113 @@
+= 장편함 API 문서
+정한영 <8735132@gmail.com>
+1.0.0 version, 2021-10-26
+:Author:    정한영
+:Email:     <8735132@gmail.com>
+:Date:      2021-10-26
+:Revision:  1.0.0
+:doctype: book
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+:docinfo: shared-head
+:operation-curl-request-title: API 요청 예제
+:operation-request-parameters-title: 요청 파라미터 상세
+:operation-path-parameters-title: Path 파라미터 상세
+:operation-request-fields-title: 요청 데이터 상세
+:operation-response-fields-title: 응답 데이터 상세
+:operation-http-request-title: HTTP 요청 예제
+:operation-http-response-title: HTTP 응답 예제
+:operation-response-body-title: API 요청에 따른 응답 예제
+
+[[summary]]
+== 개요
+
+장편함 API를 정리해 놓은 문서입니다.
+
+[[Purchase]]
+
+== 구입 항목(Purchase)
+
+장볼 항목에 대한 데이터입니다.
+
+=== 생성
+
+operation::purchase/create[snippets='curl-request,request-fields,response-fields']
+
+=== 여러개 생성
+
+operation::purchase/createAll[snippets='curl-request,request-fields,response-fields']
+
+'''
+
+=== 목록 조회
+
+operation::purchase/getAll[snippets='request-parameters,response-fields']
+
+==== 총 5개의 구입항목이 있는 경우 요청 및 응답예제
+
+===== 완료되지 않은 구입항목이며 첫번째 페이지 3개의 정보 요청시
+
+operation::purchase/getAll/uncomplete_and_limit[snippets='curl-request,response-body']
+
+===== 완료되지 않은 구입항목이며 두번째 페이지 3개의 정보 요청시
+
+operation::purchase/getAll/uncomplete_and_nextpage_and_limit[snippets='curl-request,response-body']
+
+'''
+'''
+
+=== 구입 완료
+
+operation::purchase/complete[snippets='curl-request,request-parameters,response-fields']
+
+=== 여러개 구입 완료
+
+operation::purchase/completeAll[snippets='curl-request,request-parameters,response-fields']
+
+'''
+
+=== 삭제
+
+operation::purchase/deleteById[snippets='curl-request,path-parameters,http-response']
+
+[[Grocery]]
+
+== 식재료(Grocery)
+
+=== 식재료 조회
+
+operation::grocery/getAll[snippets='request-parameters,response-fields']
+
+==== 총 3개의 식재료 정보가 저장되어 있는 경우
+
+===== 존재하지 않는 카테고리로 필터링 요청하는 경우
+
+operation::grocery/getAll/not_found_category[snippets='curl-request,http-response']
+
+'''
+
+=== 식재료 생성
+
+operation::grocery/create[snippets='curl-request,request-fields,response-fields']
+
+'''
+
+=== 식재료 삭제
+
+operation::grocery/delete[snippets='curl-request,path-parameters']
+
+[[Category]]
+
+== 카테고리(Category)
+
+=== 카테고리 리스트 조회
+
+operation::category/getAll[snippets='http-request,http-response']
+
+'''
+
+=== 카테고리 생성
+
+operation::category/create[snippets='request-fields,http-request,http-response']
